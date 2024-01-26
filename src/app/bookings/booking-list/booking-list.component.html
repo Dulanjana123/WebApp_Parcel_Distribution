@@ -1,0 +1,73 @@
+<form #form="ngForm" id="bookingListFrom">
+    <div class="form-group row mt-2">
+      <div class="col-sm-6">
+        <h3>
+          <small class="text-body-secondary"><i class="fa fa-list" aria-hidden="true"></i> Booking List</small>
+        </h3>
+      </div>
+      <div class="col-sm-2 offset-4">
+        <h3>
+          <button type="button" class="btn btn-outline-danger" routerLink="/booking"><i class="fa fa-file" aria-hidden="true"></i>  Add New Booking</button>
+        </h3>
+      </div>
+    </div>
+    <hr>
+  <div>
+    <div class="row">
+      <div class="col-sm-12" *ngIf="bookingList.length == 0">
+        <h4><small class="text-body-secondary">No bookings to view...</small></h4>
+      </div>
+        <div class="col-sm-12" *ngIf="bookingList.length != 0">
+          <table class="table table-bordered table-hover table-primary">
+            <thead>
+              <tr>
+                
+                <th>From Address</th>
+                <th>To Address</th>
+                <th>Type of Goods</th>
+                <th>Date Time</th>
+                <th>Weight</th>
+                <th>Pricing</th>
+                <th>Driver</th>
+                <th>Active</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let booking of bookingList">
+                <td>
+                  {{ booking?.fromAddress  }}
+                </td>
+                <td>
+                  {{ booking?.toAddress }}
+                </td>
+                <td>
+                  {{ booking?.typeOfGood  }}
+                </td>
+                <td>
+                  {{ booking?.bookingDateTime | date}}
+                </td>
+                <td>
+                  {{ booking?.weight }}
+                </td>
+                <td >
+                  {{ booking?.pricingType}}
+                </td>
+                <td >
+                  {{ booking?.driver?.name}}
+                </td>
+                <td >
+                  {{ booking?.isActive}}
+                </td>
+                <td>
+                  <button class="btn btn-info" (click)="toUpdate(booking?.id)">More</button>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</form>
+

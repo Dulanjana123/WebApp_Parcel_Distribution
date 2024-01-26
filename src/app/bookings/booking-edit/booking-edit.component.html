@@ -1,0 +1,80 @@
+<form  #editForm="ngForm" id="editForm" (ngSubmit)="updateBooking()" autocomplete="off">
+
+    <div class="col-sm-12">
+      <h2 class="text-center text-dark">Update Booking</h2>
+    </div>
+    <hr class="mb-4">
+  
+    <div class="form-group offset-3 row mt-2">
+      <label for="fromAddress" class="col-sm-3 col-form-label">From Address</label>
+      <div class="col-sm-6">
+        <input type="text" name="fromAddress"  [(ngModel)]="model.fromAddress" class="form-control" id="fromAddress"
+          placeholder="Enter From Address" readonly>
+      </div>
+    </div>
+  
+    <div class="form-group offset-3 row mt-2">
+      <label for="toAddress" class="col-sm-3 col-form-label">To Address</label>
+      <div class="col-sm-6">
+        <input type="text" name="toAddress"  [(ngModel)]="model.toAddress" class="form-control" id="toAddress"
+          placeholder="Enter To Address" readonly>
+      </div>
+    </div>
+  
+    <div class="form-group offset-3 row mt-2">
+      <label for="typeOfGood" class="col-sm-3 col-form-label">Type of Goods</label>
+      <div class="col-sm-6">
+        <input type="text" name="typeOfGood"  [(ngModel)]="model.typeOfGood" class="form-control" id="typeOfGood"
+          placeholder="Enter type Of Good" readonly>
+          
+      </div>
+    </div>
+  
+    <div class="form-group offset-3 row mt-2">
+      <label for="bookingDateTime" class="col-sm-3 col-form-label">Date Time</label>
+      <div class="form-group col-sm-6">
+        <input type="text" name="bookingDateTime"  [(ngModel)]="model.bookingDateTime" class="form-control" id="bookingDateTime"
+          placeholder="booking Date Time" readonly>
+    </div>
+    </div>
+  
+    <div class="form-group offset-3 row mt-2">
+      <label for="weight" class="col-sm-3 col-form-label">Weight</label>
+      <div class="col-sm-6">
+        <input type="weight" name="weight" [(ngModel)]="model.weight" class="form-control" id="weight"
+          placeholder="Enter Weight in KG" readonly>
+        
+      </div>
+    </div>
+  
+    <div class="form-group offset-3 row mt-2">
+        <label for="pricingType" class="col-sm-3 col-form-label">Pricing Type</label>
+        <div class="col-sm-6">
+        <input type="pricingType" name="pricingType" [(ngModel)]="model.pricingType" class="form-control" id="pricingType"
+            placeholder="Pricing Type" readonly>
+        </div>
+    </div>
+
+    <div class="form-group offset-3 row mt-2">
+
+        <label for="driver" class="col-sm-3 col-form-label">Driver</label>
+        <div class="col-sm-6">
+          <select name="driverId" id="driverId" class="form-control" [(ngModel)]="model.driverId">
+            <option *ngFor="let driver of driverList" [ngValue]="driver.id"> {{driver.name}} </option>
+          </select>
+        </div>  
+
+    </div>
+
+    <div class="form-group offset-3 row mt-2">
+      <label class="col-sm-3 form-check-label" for="flexCheckDefault">Active Booking</label>
+      <div class="col-sm-4">
+        <input class="form-check-input" type="checkbox" name="isActive" value="" id="isActive" [(ngModel)]="model.isActive">
+      </div>
+    </div>
+
+  
+    <div class="form-group text-center mt-5 mb-2">
+      <button class="btn btn-success me-2 col-sm-2" type="submit" [disabled]="editForm.invalid">Save Changes</button>
+    </div>
+  </form>
